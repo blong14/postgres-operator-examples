@@ -9,7 +9,7 @@
 
 # name is the name of the cluster. This defaults to the name of the Helm
 # release.
-# name: hippo
+name: hippo
 
 # postgresVersion sets the version to deploy. This version number needs to be
 # available as one of the "RELATED_IMAGE_POSTGRES_..." images as part of the PGO
@@ -67,26 +67,26 @@ postgresVersion: 14
 
 # instanceName lets you set the name of your instances. This defaults to
 # the value below. Setting "instances" overrides this value.
-# instanceName: instance1
+instanceName: instance1
 
 # instanceSize sets the size of the volume that contains the data. This defaults
 # to the value below. Settings "instances" overrides this value.
-# instanceSize: 1Gi
+instanceSize: 1Gi
 
 # instanceMemory sets the memory limit for the Postgres instances. This defaults
 # to no limit being set, but an example value is set below. Settings "instances"
 # overrides this value.
-# instanceMemory: 2Gi
+instanceMemory: 1Gi
 
 # instanceCPU sets the CPU limit for the Postgres instances. This defaults to
 # no limit being set, but an example value is set below. Setting "instances"
 # overrides this value.
-# instanceCPU: 1000m
+instanceCPU: 1000m
 
 # instanceReplicas lets you set the total number of Postgres replicas. This
 # defaults to the value below. More than on replica enables high availability
 # (HA). Settings "instances" overrides this value.
-# instanceReplicas: 1
+instanceReplicas: 1
 
 ##############################
 # Advanced Postgres Settings #
@@ -111,10 +111,10 @@ postgresVersion: 14
 #       resources:
 #         requests:
 #           storage: 1Gi
-# instances: {}
+instances: {}
 
 # port sets the port that Postgres listens on. Defaults to 5432.
-# port: 5432
+port: 5432
 
 # patroni lets you set the Patroni configuration for the Postgres cluster.
 # for example, to set up synchronous replication:
@@ -124,24 +124,24 @@ postgresVersion: 14
 #     postgresql:
 #       parameters:
 #         synchronous_commit: "on"
-# patroni: {}
+patroni: {}
 
 # users sets any custom Postgres users and databases that they have  access to
 # as well as any permossions assoicated with the user account.
 # users: {}
 
 # dataSource specifies a data source for bootstrapping a Postgres cluster.
-# dataSource: {}
+dataSource: {}
 
 # customTLSSecret references a Secret that contains the relevant information for
 # bringing external TLS artifacts to a PostgreSQL cluster. This provides the
 # TLS for the cluster itself.
-# customTLSSecret: {}
+customTLSSecret: {}
 
 # customReplicationTLSSecret references a Secret that contains the relevant
 # information for bringing external TLS artifacts to a PostgreSQL cluster. This
 # provides the information for the replication user.
-# customReplicationTLSSecret: {}
+customReplicationTLSSecret: {}
 
 # databaseInitSQL referencs a ConfigMap that contains a SQL file that should be
 # run a cluster bootstrap.
@@ -167,7 +167,7 @@ postgresVersion: 14
 
 # backupsSize sets the storage size of the backups to a volume in Kubernetes.
 # can be overridden by "pgBackRestConfig", if set. Defaults to the value below.
-# backupsSize: 1Gi
+backupsSize: 1Gi
 
 # s3 allows for AWS S3 or an S3 compatible storage system to be used for
 # backups. This allows for a quick setup with S3; if you need more advanced
@@ -268,29 +268,29 @@ postgresVersion: 14
 # metadata contains any metadata that should be applied to all PGO managed
 # objects in this Postgres cluster. This includes "annotations" and "labels" as
 # subkeys.
-# metadata: {}
+metadata: {}
 
 # service customizes the Service that exposes the Postgres primary.
-# service: {}
+service: {}
 
 # imagePullPolicy sets the pull policy for all the images. This defaults to
 # the Kubernetes heuristic:
 # https://kubernetes.io/docs/concepts/containers/images/#imagepullpolicy-defaulting
-# imagePullPolicy: IfNotPresent
+imagePullPolicy: IfNotPresent
 
 # imagePullSecrets references Secrets that credentials for pulling image from
 # private repositories
-# imagePullSecrets: []
+imagePullSecrets: []
 
 # supplementalGroups sets any group IDs that should be assigned to
 # Pods, particularly around file system contraints within a system
-# supplementalGroups: []
+supplementalGroups: []
 
 # disableDefaultPodScheduling if set to true, will disable any of the default
 # scheduling constraints for Pods, such as the default Pod Topology Spread
 # Constraints. If set to false or unset, the default scheduling constraints will
 # be used in addition to any customizations that are added in.
-# disableDefaultPodScheduling: false
+disableDefaultPodScheduling: false
 
 # openshift can set explicitly if this is an OpenShift cluster, or a cluster
 # that uses a SecurityContextConstraint. This usually does not need to be set,
